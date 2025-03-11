@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.JSInterop;
 
-namespace BlazorVirtualize.Extensions;
+namespace BlazorVirtualize;
 
 /// <summary>
 /// Provides functionality for rendering a virtualized list of items.

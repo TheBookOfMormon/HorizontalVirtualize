@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace BlazorVirtualize.Extensions;
+namespace BlazorVirtualize;
 
 internal sealed class BlazorVirtualizeJsInterop : IAsyncDisposable
 {
@@ -30,7 +30,7 @@ internal sealed class BlazorVirtualizeJsInterop : IAsyncDisposable
     public async ValueTask InitializeAsync(ElementReference spacerBefore, ElementReference spacerAfter, bool horizontal)
     {
         _selfReference = DotNetObjectReference.Create(this);
-        _module ??= await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "/_content/BlazorVirtualize.Extensions/js/BlazorVirtualize.js");
+        _module ??= await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "/_content/BlazorVirtualize/js/BlazorVirtualize.js");
         await _module.InvokeVoidAsync($"{JsFunctionsPrefix}.init", _selfReference, spacerBefore, spacerAfter, horizontal);
     }
 

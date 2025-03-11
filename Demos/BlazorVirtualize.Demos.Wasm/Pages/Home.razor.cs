@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
-namespace HorizontalVirtualize.Client.Pages;
+namespace BlazorVirtualize.Demos.Wasm.Pages;
 
 public partial class Home
 {
