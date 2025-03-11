@@ -19,8 +19,12 @@
         <Folder Include="wwwroot\" />
     </ItemGroup>
 
-    <Target Name="CompileTypeScript" BeforeTargets="Build">
-        <Exec Command="npx tsc" />
-    </Target>    
+    <Target Name="PreBuild" BeforeTargets="Build">
+        <Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
+    </Target>
+
+    <Target Name="CompileTypeScript" DependsOnTargets="PreBuild" BeforeTargets="Build">
+        <Exec Command="npx tsc" WorkingDirectory="$(ProjectDir)" />
+    </Target>   
 
 </Project>
