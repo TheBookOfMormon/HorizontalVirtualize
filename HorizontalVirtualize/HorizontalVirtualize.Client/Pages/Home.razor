@@ -1,0 +1,75 @@
+﻿@page "/"
+@using BlazorVirtualize.Extensions
+
+<PageTitle>Home</PageTitle>
+
+<style>
+    .spreadsheet {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .spreadsheet_column {
+        display: flex;
+        flex-direction: column;
+        white-space: nowrap;
+        padding: 0.25rem;
+    }
+
+        .spreadsheet_column .cell .header {
+            text-align: right;
+        }
+</style>
+
+<div class="spreadsheet">
+    <div class="spreadsheet_column">
+        <div class="cell header">Word</div>
+        <div class="cell">Book 1</div>
+        <div class="cell">Book 2</div>
+        <div class="cell">Book 3</div>
+    </div>
+
+
+    <BlazorVirtualize ItemsProvider=@LoadDataAsync Horizontal>
+        <ItemContent Context=data>
+            <div class="spreadsheet_column">
+                <div class="cell header">@data.Index</div>
+                @foreach (string word in data.Words)
+                {
+                    <div class="cell">@word</div>
+                }
+            </div>
+        </ItemContent>
+    </BlazorVirtualize>
+
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Word</th>
+            <th>Book 1</th>
+            <th>Book 2</th>
+            <th>Book 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <BlazorVirtualize ItemsProvider=@LoadDataAsync>
+            <ItemContent Context=data>
+                <tr>
+                    <td>@data.Index</td>
+                    @foreach (string word in data.Words)
+                    {
+                        <td>@word</td>
+                    }
+                </tr>
+            </ItemContent>
+        </BlazorVirtualize>
+    </tbody>
+</table>
+
+
+

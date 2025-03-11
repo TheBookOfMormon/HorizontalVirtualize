@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@microsoft/dotnet-js-interop": "^8.0.0"
+  }
+}
